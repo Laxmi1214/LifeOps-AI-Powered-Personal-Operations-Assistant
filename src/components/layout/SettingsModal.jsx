@@ -46,7 +46,7 @@ export const SettingsModal = ({ isOpen, onClose }) => {
               onClick={() => setActiveTab(tab.id)}
               className={`py-2.5 px-3 border-b-2 text-xs transition-colors ${
                 activeTab === tab.id
-                  ? 'border-blue-600 text-blue-600 font-medium'
+                  ? 'border-black text-black font-medium'
                   : 'border-transparent text-gray-500 hover:text-gray-900'
               }`}
             >
@@ -67,7 +67,7 @@ export const SettingsModal = ({ isOpen, onClose }) => {
                   type="text"
                   value={mcpUrl}
                   onChange={(e) => setMcpUrl(e.target.value)}
-                  className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 font-mono text-xs focus:outline-none focus:border-blue-500"
+                  className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 font-mono text-xs focus:outline-none focus:border-black"
                 />
                 <p className="text-[11px] text-gray-400 mt-1">
                   Connects to the LifeOps tool server via Server-Sent Events (SSE).
@@ -81,7 +81,7 @@ export const SettingsModal = ({ isOpen, onClose }) => {
                 <select
                   value={transport}
                   onChange={(e) => setTransport(e.target.value)}
-                  className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 text-xs focus:outline-none focus:border-blue-500"
+                  className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 text-xs focus:outline-none focus:border-black"
                 >
                   <option value="streamable-http">Streamable HTTP (SSE)</option>
                   <option value="stdio">Stdio Process Pipe (Local)</option>
@@ -100,7 +100,7 @@ export const SettingsModal = ({ isOpen, onClose }) => {
                   ].map((c) => (
                     <div key={c.name} className="flex items-center justify-between p-2 rounded-md border border-gray-100 bg-gray-50/50">
                       <span className="text-gray-700">{c.name}</span>
-                      <span className="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-medium border border-emerald-100">
+                      <span className="text-[10px] bg-[#F9FAFB] text-black px-2 py-0.5 rounded font-medium border border-[#E5E5E5]">
                         {c.status}
                       </span>
                     </div>
@@ -119,7 +119,7 @@ export const SettingsModal = ({ isOpen, onClose }) => {
                 <select
                   value={aiModel}
                   onChange={(e) => setAiModel(e.target.value)}
-                  className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 text-xs focus:outline-none focus:border-blue-500"
+                  className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 text-xs focus:outline-none focus:border-black"
                 >
                   <option value="claude-3-5-sonnet">Claude 3.5 Sonnet</option>
                   <option value="gemini-1-5-pro">Gemini 1.5 Pro</option>
@@ -138,7 +138,7 @@ export const SettingsModal = ({ isOpen, onClose }) => {
                   type="checkbox"
                   checked={proactivePlanning}
                   onChange={(e) => setProactivePlanning(e.target.checked)}
-                  className="rounded border-gray-300 text-blue-600 focus:ring-0 w-4 h-4 cursor-pointer"
+                  className="rounded border-gray-300 text-black focus:ring-0 w-4 h-4 cursor-pointer"
                 />
               </div>
             </div>
@@ -166,7 +166,7 @@ export const SettingsModal = ({ isOpen, onClose }) => {
           </button>
           <button
             onClick={handleSave}
-            className="px-3.5 py-1.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs transition-colors"
+            className="px-3.5 py-1.5 rounded-md bg-[#111111] hover:bg-black text-white font-medium text-xs transition-colors"
           >
             Save Changes
           </button>

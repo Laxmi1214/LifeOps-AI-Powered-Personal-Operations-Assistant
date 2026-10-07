@@ -33,9 +33,9 @@ export const EmailSummaryModal = ({ email, isOpen, onClose }) => {
             </div>
           </div>
 
-          <div className="p-3.5 rounded-md bg-blue-50/60 border border-blue-100 space-y-1">
-            <span className="text-[11px] font-semibold text-blue-900 block">AI Detected Action</span>
-            <p className="text-xs text-blue-800 leading-normal">{email.aiDetectedAction}</p>
+          <div className="p-3.5 rounded-md bg-[#F9FAFB] border border-[#E5E5E5] space-y-1">
+            <span className="text-[11px] font-semibold text-black block">AI Detected Action</span>
+            <p className="text-xs text-[#555555] leading-normal">{email.aiDetectedAction}</p>
           </div>
 
           <div>
@@ -51,7 +51,7 @@ export const EmailSummaryModal = ({ email, isOpen, onClose }) => {
                 createTaskFromEmail(email);
                 onClose();
               }}
-              className="px-3 py-1.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs transition-colors"
+              className="px-3 py-1.5 rounded-md bg-[#111111] hover:bg-black text-white font-medium text-xs transition-colors"
             >
               Create Task
             </button>

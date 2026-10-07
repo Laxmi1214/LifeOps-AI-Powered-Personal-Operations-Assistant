@@ -9,7 +9,7 @@ const CustomMiniTooltip = ({ active, payload }) => {
     return (
       <div className="bg-white border border-gray-200 px-2 py-1 rounded shadow-dropdown text-[10px]">
         <div className="font-medium text-gray-900">{payload[0].payload.day}</div>
-        <div className="text-blue-600 font-semibold">{payload[0].value}%</div>
+        <div className="text-black font-semibold">{payload[0].value}%</div>
       </div>
     );
   }
@@ -34,12 +34,12 @@ export const ProductivitySnapshot = () => {
           </h2>
           <div className="flex items-baseline gap-2 mt-1">
             <span className="text-2xl font-bold text-gray-900">82%</span>
-            <span className="text-xs font-medium text-emerald-600">+14% vs last week</span>
+            <span className="text-xs font-bold text-black">+14% vs last week</span>
           </div>
         </div>
         <button
           onClick={() => navigate('/analytics')}
-          className="text-xs text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 group"
+          className="text-xs text-black hover:text-gray-700 font-medium flex items-center gap-1 group"
         >
           <span>Full report</span>
           <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
@@ -70,10 +70,10 @@ export const ProductivitySnapshot = () => {
             <Area
               type="monotone"
               dataKey="score"
-              stroke="#2563EB"
+              stroke="#111111"
               strokeWidth={1.5}
               fillOpacity={0.06}
-              fill="#2563EB"
+              fill="#111111"
             />
           </AreaChart>
         </ResponsiveContainer>

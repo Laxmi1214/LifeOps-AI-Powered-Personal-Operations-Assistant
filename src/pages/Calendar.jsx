@@ -11,10 +11,10 @@ import { useLifeOps } from '../context/LifeOpsContext';
 import { ScheduleModal } from '../components/calendar/ScheduleModal';
 
 const EVENT_PILL_STYLES = {
-  Meeting: 'border-l-2 border-blue-600 bg-blue-50/50 text-blue-900',
-  Focus: 'border-l-2 border-indigo-600 bg-indigo-50/50 text-indigo-900',
-  Deadline: 'border-l-2 border-red-600 bg-red-50/50 text-red-900',
-  Personal: 'border-l-2 border-emerald-600 bg-emerald-50/50 text-emerald-900'
+  Meeting: 'border-l-2 border-black bg-white text-black',
+  Focus: 'border-l-2 border-[#555555] bg-white text-black',
+  Deadline: 'border-l-2 border-black bg-white text-black font-semibold',
+  Personal: 'border-l-2 border-[#888888] bg-white text-[#555555]'
 };
 
 export const Calendar = () => {
@@ -63,7 +63,7 @@ export const Calendar = () => {
 
           <button
             onClick={() => setIsScheduleOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium transition-colors shadow-subtle"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#111111] hover:bg-black text-white text-xs font-medium transition-colors shadow-subtle"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Schedule</span>
@@ -103,11 +103,11 @@ export const Calendar = () => {
                   <div
                     key={day.full}
                     className={`py-2 px-1 ${
-                      day.isToday ? 'bg-blue-50/50' : 'bg-gray-50/50'
+                      day.isToday ? 'bg-[#F3F3F3]' : 'bg-white'
                     }`}
                   >
                     <div className="text-[10px] font-medium text-gray-400 uppercase">{day.name}</div>
-                    <div className={`font-semibold mt-0.5 ${day.isToday ? 'text-blue-600' : 'text-gray-800'}`}>
+                    <div className={`font-semibold mt-0.5 ${day.isToday ? 'text-black' : 'text-[#555555]'}`}>
                       {day.date.split(' ')[1]}
                     </div>
                   </div>
@@ -170,12 +170,12 @@ export const Calendar = () => {
                       key={day}
                       className={`h-12 p-1 border rounded text-left flex flex-col justify-between ${
                         isCurrent
-                          ? 'border-blue-500 bg-blue-50/30 font-semibold text-blue-700'
-                          : 'border-gray-100 text-gray-600'
+                          ? 'border-black bg-black font-semibold text-white'
+                          : 'border-[#E5E5E5] text-[#555555]'
                       }`}
                     >
                       <span className="text-[10px]">{day}</span>
-                      {hasEvents && <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />}
+                      {hasEvents && <div className={`w-1.5 h-1.5 rounded-full ${isCurrent ? 'bg-white' : 'bg-black'}`} />}
                     </div>
                   );
                 })}
@@ -232,7 +232,7 @@ export const Calendar = () => {
 
                   <button
                     onClick={() => scheduleTimeSlot(slot)}
-                    className="w-full text-center px-2 py-1 rounded border border-gray-200 bg-white hover:bg-gray-50 text-[11px] font-medium text-blue-600 transition-colors"
+                    className="w-full text-center px-2 py-1 rounded border border-gray-200 bg-white hover:bg-gray-50 text-[11px] font-medium text-black transition-colors"
                   >
                     Schedule focus block
                   </button>

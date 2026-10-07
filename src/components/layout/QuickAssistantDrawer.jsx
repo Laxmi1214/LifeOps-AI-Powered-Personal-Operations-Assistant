@@ -48,7 +48,7 @@ export const QuickAssistantDrawer = () => {
         {/* Header */}
         <div className="p-3.5 border-b border-gray-200 flex items-center justify-between bg-white">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-blue-600" />
+            <Sparkles className="w-4 h-4 text-black" />
             <h3 className="text-sm font-semibold text-gray-900">LifeOps Assistant</h3>
           </div>
           <div className="flex items-center gap-1">
@@ -88,7 +88,7 @@ export const QuickAssistantDrawer = () => {
                 <div
                   className={`p-3 rounded-lg max-w-[90%] leading-relaxed ${
                     isUser
-                      ? 'bg-blue-600 text-white'
+                      ? 'bg-[#111111] text-white'
                       : 'bg-gray-50 border border-gray-200 text-gray-800'
                   }`}
                 >
@@ -101,14 +101,14 @@ export const QuickAssistantDrawer = () => {
                     {msg.actionCards.map((card) => (
                       <div
                         key={card.id}
-                        className="p-3 rounded-lg bg-blue-50/50 border border-blue-100 text-left"
+                        className="p-3 rounded-lg bg-white border border-[#E5E5E5] text-left"
                       >
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-[10px] font-semibold text-blue-700 uppercase tracking-wider">
+                          <span className="text-[10px] font-semibold text-black font-bold uppercase tracking-wider">
                             {card.title}
                           </span>
                           {card.priority && (
-                            <span className="text-[9px] px-1.5 py-0.2 rounded bg-red-50 text-red-700 border border-red-100 font-medium">
+                            <span className="text-[9px] px-1.5 py-0.2 rounded bg-[#F9FAFB] text-black border border-[#E5E5E5] font-medium">
                               {card.priority}
                             </span>
                           )}
@@ -124,7 +124,7 @@ export const QuickAssistantDrawer = () => {
                             scheduleTaskOnCalendar({ title: card.taskTitle || 'Focused Session' });
                             setIsQuickAssistantOpen(false);
                           }}
-                          className="px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-medium transition-colors"
+                          className="px-2.5 py-1 rounded bg-[#111111] hover:bg-black text-white text-[11px] font-medium transition-colors"
                         >
                           Schedule
                         </button>
@@ -160,7 +160,7 @@ export const QuickAssistantDrawer = () => {
 
         {/* Input Bar */}
         <form onSubmit={handleSubmit} className="p-3 border-t border-gray-200 bg-white">
-          <div className="flex items-center gap-2 border border-gray-200 rounded-md px-3 py-1.5 focus-within:border-blue-500">
+          <div className="flex items-center gap-2 border border-gray-200 rounded-md px-3 py-1.5 focus-within:border-black">
             <input
               type="text"
               value={input}
@@ -171,7 +171,7 @@ export const QuickAssistantDrawer = () => {
             <button
               type="submit"
               disabled={!input.trim() || isSubmitting}
-              className="p-1 rounded bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-40 transition-colors"
+              className="p-1 rounded bg-[#111111] hover:bg-black text-white disabled:opacity-40 transition-colors"
             >
               <Send className="w-3 h-3" />
             </button>

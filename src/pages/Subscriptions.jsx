@@ -31,7 +31,7 @@ export const Subscriptions = () => {
 
         <button
           onClick={() => setIsAddOpen(true)}
-          className="self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium transition-colors shadow-subtle"
+          className="self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#111111] hover:bg-black text-white text-xs font-medium transition-colors shadow-subtle"
         >
           <Plus className="w-3.5 h-3.5" />
           <span>Add subscription</span>
@@ -114,7 +114,7 @@ export const Subscriptions = () => {
 
                   <div className="col-span-3 sm:col-span-2 flex items-center justify-end">
                     {isReminderSet ? (
-                      <span className="flex items-center gap-1 text-[11px] text-emerald-700 font-medium">
+                      <span className="flex items-center gap-1 text-[11px] text-black font-medium">
                         <Check className="w-3 h-3" />
                         <span>Reminder set</span>
                       </span>

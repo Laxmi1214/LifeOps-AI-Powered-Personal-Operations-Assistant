@@ -59,7 +59,7 @@ export const AddSubscriptionModal = ({ isOpen, onClose }) => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g., GitHub Copilot, Fiber Internet"
-              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 text-xs"
+              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black text-xs"
             />
           </div>
 
@@ -74,7 +74,7 @@ export const AddSubscriptionModal = ({ isOpen, onClose }) => {
                 value={cost}
                 onChange={(e) => setCost(e.target.value)}
                 placeholder="649"
-                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 text-xs"
+                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black text-xs"
               />
             </div>
 
@@ -85,7 +85,7 @@ export const AddSubscriptionModal = ({ isOpen, onClose }) => {
               <select
                 value={cycle}
                 onChange={(e) => setCycle(e.target.value)}
-                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-blue-500 text-xs"
+                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-black text-xs"
               >
                 <option value="Monthly">Monthly</option>
                 <option value="Annual">Annual</option>
@@ -101,7 +101,7 @@ export const AddSubscriptionModal = ({ isOpen, onClose }) => {
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-blue-500 text-xs"
+                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-black text-xs"
               >
                 <option value="Developer Tools">Developer Tools</option>
                 <option value="Entertainment">Entertainment</option>
@@ -118,7 +118,7 @@ export const AddSubscriptionModal = ({ isOpen, onClose }) => {
                 type="date"
                 value={nextRenewal}
                 onChange={(e) => setNextRenewal(e.target.value)}
-                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-blue-500 text-xs"
+                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-black text-xs"
               />
             </div>
           </div>
@@ -132,7 +132,7 @@ export const AddSubscriptionModal = ({ isOpen, onClose }) => {
               value={paymentMethod}
               onChange={(e) => setPaymentMethod(e.target.value)}
               placeholder="e.g., Credit Card •••• 4091"
-              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 text-xs"
+              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black text-xs"
             />
           </div>
 
@@ -146,7 +146,7 @@ export const AddSubscriptionModal = ({ isOpen, onClose }) => {
             </button>
             <button
               type="submit"
-              className="px-3.5 py-1.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors"
+              className="px-3.5 py-1.5 rounded-md bg-[#111111] hover:bg-black text-white font-medium transition-colors"
             >
               Add Commitment
             </button>

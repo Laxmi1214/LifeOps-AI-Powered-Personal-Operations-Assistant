@@ -92,10 +92,10 @@ export const CommandPalette = () => {
           <div>
             <button
               onClick={handleQuickAsk}
-              className="w-full flex items-center justify-between p-2 rounded-md hover:bg-blue-50/70 text-gray-700 hover:text-blue-700 transition-colors"
+              className="w-full flex items-center justify-between p-2 rounded-md hover:bg-[#F3F3F3] text-gray-700 hover:text-black font-bold transition-colors"
             >
               <div className="flex items-center gap-2">
-                <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                <Sparkles className="w-3.5 h-3.5 text-black" />
                 <span className="font-medium text-xs">Ask LifeOps: "{search || 'What should I focus on?'}"</span>
               </div>
               <CornerDownLeft className="w-3 h-3 text-gray-400" />

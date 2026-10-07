@@ -60,7 +60,7 @@ export const Email = () => {
               onClick={() => setActiveTab(section)}
               className={`px-3 py-2 border-b-2 font-medium transition-colors flex items-center gap-1.5 ${
                 isSelected
-                  ? 'border-blue-600 text-blue-600 font-semibold'
+                  ? 'border-black text-black font-semibold'
                   : 'border-transparent text-gray-500 hover:text-gray-900'
               }`}
             >
@@ -78,7 +78,7 @@ export const Email = () => {
             <div
               key={email.id}
               className={`p-4 transition-colors hover:bg-gray-50/60 space-y-2 ${
-                !email.read ? 'bg-blue-50/20' : ''
+                !email.read ? 'bg-[#F9FAFB]' : ''
               }`}
             >
               {/* Row Header */}
@@ -100,7 +100,7 @@ export const Email = () => {
               {/* AI detected banner row */}
               {email.aiDetectedAction && (
                 <div className="p-2.5 rounded-md bg-gray-50 border border-gray-100 flex items-start gap-2 text-xs">
-                  <Sparkles className="w-3.5 h-3.5 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <Sparkles className="w-3.5 h-3.5 text-black mt-0.5 flex-shrink-0" />
                   <div className="flex-1">
                     <span className="font-medium text-gray-700">AI detected: </span>
                     <span className="text-gray-600">{email.aiDetectedAction}</span>
@@ -112,7 +112,7 @@ export const Email = () => {
               <div className="flex items-center gap-2 pt-1">
                 <button
                   onClick={() => createTaskFromEmail(email)}
-                  className="px-2.5 py-1 rounded border border-gray-200 bg-white hover:bg-gray-50 text-[11px] font-medium text-blue-600 transition-colors"
+                  className="px-2.5 py-1 rounded border border-gray-200 bg-white hover:bg-gray-50 text-[11px] font-medium text-black transition-colors"
                 >
                   Create task
                 </button>

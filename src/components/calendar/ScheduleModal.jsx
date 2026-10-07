@@ -63,7 +63,7 @@ export const ScheduleModal = ({ isOpen, onClose }) => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g., Focus: Complete documentation"
-              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 text-xs"
+              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black text-xs"
             />
           </div>
 
@@ -75,7 +75,7 @@ export const ScheduleModal = ({ isOpen, onClose }) => {
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-blue-500 text-xs"
+                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-black text-xs"
               >
                 <option value="Focus">Focus Session</option>
                 <option value="Meeting">Meeting</option>
@@ -92,7 +92,7 @@ export const ScheduleModal = ({ isOpen, onClose }) => {
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-blue-500 text-xs"
+                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-black text-xs"
               />
             </div>
           </div>
@@ -106,7 +106,7 @@ export const ScheduleModal = ({ isOpen, onClose }) => {
                 type="time"
                 value={startTime}
                 onChange={(e) => setStartTime(e.target.value)}
-                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-blue-500 text-xs"
+                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-black text-xs"
               />
             </div>
 
@@ -118,7 +118,7 @@ export const ScheduleModal = ({ isOpen, onClose }) => {
                 type="time"
                 value={endTime}
                 onChange={(e) => setEndTime(e.target.value)}
-                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-blue-500 text-xs"
+                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-black text-xs"
               />
             </div>
           </div>
@@ -132,7 +132,7 @@ export const ScheduleModal = ({ isOpen, onClose }) => {
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               placeholder="e.g., Focus Room / Meet Link"
-              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 text-xs"
+              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black text-xs"
             />
           </div>
 
@@ -146,7 +146,7 @@ export const ScheduleModal = ({ isOpen, onClose }) => {
             </button>
             <button
               type="submit"
-              className="px-3.5 py-1.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors"
+              className="px-3.5 py-1.5 rounded-md bg-[#111111] hover:bg-black text-white font-medium transition-colors"
             >
               Schedule
             </button>

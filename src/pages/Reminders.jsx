@@ -45,10 +45,10 @@ export const Reminders = () => {
               >
                 <div className="space-y-0.5">
                   <div className="text-[11px] text-gray-400 font-medium flex items-center gap-1.5">
-                    {isSmart && <Sparkles className="w-3 h-3 text-blue-600" />}
+                    {isSmart && <Sparkles className="w-3 h-3 text-black" />}
                     <span>{rem.triggerTime}</span>
                     {rem.status === 'snoozed' && (
-                      <span className="text-amber-600 font-semibold">(Snoozed)</span>
+                      <span className="text-black font-semibold">(Snoozed)</span>
                     )}
                   </div>
                   <div className="text-xs font-medium text-gray-900">{rem.title}</div>
@@ -66,7 +66,7 @@ export const Reminders = () => {
                   </button>
                   <button
                     onClick={() => completeReminder(rem.id)}
-                    className="p-1 text-gray-400 hover:text-emerald-600 rounded"
+                    className="p-1 text-gray-400 hover:text-black rounded"
                     title="Mark complete"
                   >
                     <Check className="w-3.5 h-3.5" />

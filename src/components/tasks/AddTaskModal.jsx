@@ -68,7 +68,7 @@ export const AddTaskModal = ({ isOpen, onClose }) => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g., Complete MCP connector integration"
-              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 text-xs"
+              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black text-xs"
             />
           </div>
 
@@ -81,7 +81,7 @@ export const AddTaskModal = ({ isOpen, onClose }) => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Notes or deliverables..."
-              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 text-xs"
+              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black text-xs"
             />
           </div>
 
@@ -93,7 +93,7 @@ export const AddTaskModal = ({ isOpen, onClose }) => {
               <select
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
-                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-blue-500 text-xs"
+              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-black text-xs"
               >
                 <option value="HIGH">High</option>
                 <option value="MEDIUM">Medium</option>
@@ -108,7 +108,7 @@ export const AddTaskModal = ({ isOpen, onClose }) => {
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-blue-500 text-xs"
+              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-black text-xs"
               >
                 <option value="Project">Project</option>
                 <option value="Engineering">Engineering</option>
@@ -127,7 +127,7 @@ export const AddTaskModal = ({ isOpen, onClose }) => {
                 type="date"
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
-                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-blue-500 text-xs"
+              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-black text-xs"
               />
             </div>
 
@@ -139,7 +139,7 @@ export const AddTaskModal = ({ isOpen, onClose }) => {
                 type="time"
                 value={dueTime}
                 onChange={(e) => setDueTime(e.target.value)}
-                className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-blue-500 text-xs"
+              className="w-full border border-gray-200 rounded-md px-3 py-1.5 text-gray-900 focus:outline-none focus:border-black text-xs"
               />
             </div>
           </div>
@@ -150,7 +150,7 @@ export const AddTaskModal = ({ isOpen, onClose }) => {
               type="checkbox"
               checked={enableReminder}
               onChange={(e) => setEnableReminder(e.target.checked)}
-              className="rounded border-gray-300 text-blue-600 focus:ring-0 w-4 h-4 cursor-pointer"
+              className="rounded border-gray-300 text-black focus:ring-0 w-4 h-4 cursor-pointer"
             />
           </div>
 
@@ -165,7 +165,7 @@ export const AddTaskModal = ({ isOpen, onClose }) => {
             </button>
             <button
               type="submit"
-              className="px-3.5 py-1.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors"
+              className="px-3.5 py-1.5 rounded-md bg-[#111111] hover:bg-black text-white font-medium transition-colors"
             >
               Create Task
             </button>

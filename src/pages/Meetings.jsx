@@ -43,7 +43,7 @@ export const Meetings = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-1 text-xs text-blue-600 font-medium group-hover:translate-x-0.5 transition-transform">
+              <div className="flex items-center gap-1 text-xs text-black font-medium group-hover:translate-x-0.5 transition-transform">
                 <span>View</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>
@@ -84,7 +84,7 @@ export const Meetings = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-1 text-xs text-blue-600 font-medium group-hover:translate-x-0.5 transition-transform pt-1">
+              <div className="flex items-center gap-1 text-xs text-black font-medium group-hover:translate-x-0.5 transition-transform pt-1">
                 <span>Details</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>

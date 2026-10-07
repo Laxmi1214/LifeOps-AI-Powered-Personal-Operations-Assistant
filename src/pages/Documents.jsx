@@ -149,7 +149,7 @@ export const Documents = () => {
               <div className="col-span-7 sm:col-span-1 flex items-center justify-end gap-1.5">
                 <button
                   onClick={() => setSelectedDoc(doc)}
-                  className="px-2 py-1 rounded text-[11px] text-blue-600 hover:bg-blue-50 transition-colors font-medium"
+                  className="px-2 py-1 rounded text-[11px] text-black hover:bg-[#F9FAFB] transition-colors font-medium"
                 >
                   Summary
                 </button>

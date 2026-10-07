@@ -52,11 +52,11 @@ export const Sidebar = ({ onOpenDemoNotes, onOpenSettings }) => {
   ];
 
   return (
-    <aside className="w-60 flex-shrink-0 bg-[#FBFBFC] border-r border-gray-200 flex flex-col h-screen select-none sticky top-0">
+    <aside className="w-60 flex-shrink-0 bg-white border-r border-[#E5E5E5] flex flex-col h-screen select-none sticky top-0">
       {/* Brand Header */}
       <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="w-6 h-6 rounded-md bg-blue-600 flex items-center justify-center text-white font-bold text-xs">
+          <div className="w-6 h-6 rounded-md bg-[#111111] flex items-center justify-center text-white font-bold text-xs">
             L
           </div>
           <span className="font-semibold text-sm tracking-tight text-gray-900 font-sans">
@@ -86,8 +86,8 @@ export const Sidebar = ({ onOpenDemoNotes, onOpenSettings }) => {
                     className={({ isActive }) =>
                       `group flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-normal transition-colors ${
                         isActive
-                          ? 'bg-blue-50/80 text-blue-700 font-medium'
-                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100/60'
+                          ? 'bg-[#111111] text-white font-medium'
+                          : 'text-gray-900 hover:bg-[#F3F3F3]'
                       }`
                     }
                   >
@@ -97,8 +97,8 @@ export const Sidebar = ({ onOpenDemoNotes, onOpenSettings }) => {
                           <Icon
                             className={`w-4 h-4 transition-colors ${
                               isActive
-                                ? 'text-blue-600'
-                                : 'text-gray-400 group-hover:text-gray-600'
+                                ? 'text-white'
+                                : 'text-[#333333] group-hover:text-black'
                             }`}
                           />
                           <span>{item.label}</span>
@@ -107,8 +107,8 @@ export const Sidebar = ({ onOpenDemoNotes, onOpenSettings }) => {
                           <span
                             className={`px-1.5 py-0.2 text-[10px] rounded font-medium ${
                               isActive
-                                ? 'bg-blue-100/80 text-blue-800'
-                                : 'bg-gray-100 text-gray-500'
+                                ? 'bg-white/20 text-white'
+                                : 'bg-[#F5F5F5] text-black'
                             }`}
                           >
                             {item.badge}
@@ -128,16 +128,16 @@ export const Sidebar = ({ onOpenDemoNotes, onOpenSettings }) => {
       <div className="p-3 border-t border-gray-100 space-y-1">
         <button
           onClick={onOpenSettings}
-          className="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-xs text-gray-600 hover:text-gray-900 hover:bg-gray-100/60 transition-colors"
+          className="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-xs text-gray-900 hover:bg-[#F3F3F3] transition-colors"
         >
-          <Settings className="w-4 h-4 text-gray-400" />
+          <Settings className="w-4 h-4 text-[#333333]" />
           <span>Settings</span>
         </button>
         <button
           onClick={onOpenDemoNotes}
-          className="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-xs text-gray-600 hover:text-gray-900 hover:bg-gray-100/60 transition-colors"
+          className="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-xs text-gray-900 hover:bg-[#F3F3F3] transition-colors"
         >
-          <HelpCircle className="w-4 h-4 text-gray-400" />
+          <HelpCircle className="w-4 h-4 text-[#333333]" />
           <span>Demo Guide</span>
         </button>
 

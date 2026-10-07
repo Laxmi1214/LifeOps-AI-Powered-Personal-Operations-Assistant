@@ -22,9 +22,9 @@ export const Dashboard = ({ onOpenAddTask }) => {
 
         <button
           onClick={onOpenAddTask}
-          className="self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 text-xs font-medium transition-colors shadow-subtle"
+          className="self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#111111] hover:bg-black text-white text-xs font-medium transition-colors shadow-subtle"
         >
-          <Plus className="w-3.5 h-3.5 text-gray-500" />
+          <Plus className="w-3.5 h-3.5 text-white" />
           <span>New task</span>
         </button>
       </div>

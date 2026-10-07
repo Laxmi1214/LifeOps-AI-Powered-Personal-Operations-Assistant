@@ -11,14 +11,14 @@ export const ToastContainer = () => {
     <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm pointer-events-none">
       {toasts.map((toast) => {
         let Icon = Info;
-        let iconColor = 'text-blue-600';
+        let iconColor = 'text-black';
 
         if (toast.type === 'success') {
           Icon = CheckCircle2;
-          iconColor = 'text-emerald-600';
+          iconColor = 'text-black';
         } else if (toast.type === 'warning') {
           Icon = AlertCircle;
-          iconColor = 'text-amber-600';
+          iconColor = 'text-black';
         }
 
         return (
@@ -35,7 +35,7 @@ export const ToastContainer = () => {
                     toast.onAction();
                     removeToast(toast.id);
                   }}
-                  className="mt-1 text-[11px] font-semibold text-blue-600 hover:text-blue-700 underline underline-offset-2"
+                  className="mt-1 text-[11px] font-semibold text-black hover:text-black font-bold underline underline-offset-2"
                 >
                   {toast.actionTitle}
                 </button>

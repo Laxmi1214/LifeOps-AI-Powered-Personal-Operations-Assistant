@@ -70,7 +70,7 @@ export const Topbar = () => {
           >
             <Bell className="w-4 h-4" />
             {unreadNotificationCount > 0 && (
-              <span className="absolute top-1 right-1 w-2 h-2 bg-blue-600 rounded-full"></span>
+              <span className="absolute top-1 right-1 w-2 h-2 bg-black rounded-full"></span>
             )}
           </button>
 
@@ -80,7 +80,7 @@ export const Topbar = () => {
         {/* Primary CTA: "Ask LifeOps" (Clean, solid blue, professional) */}
         <button
           onClick={() => setIsQuickAssistantOpen(true)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium transition-colors shadow-subtle active:scale-[0.98]"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#111111] hover:bg-black text-white text-xs font-medium transition-colors shadow-subtle active:scale-[0.98]"
         >
           <Sparkles className="w-3.5 h-3.5" />
           <span>Ask LifeOps</span>

@@ -21,7 +21,7 @@ export const TodayPriorities = () => {
         </h2>
         <button
           onClick={() => navigate('/tasks')}
-          className="text-xs text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 group"
+          className="text-xs text-black hover:underline font-medium flex items-center gap-1 group"
         >
           <span>View all</span>
           <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
@@ -42,7 +42,7 @@ export const TodayPriorities = () => {
                   onClick={() => toggleTaskStatus(task.id)}
                   className={`w-4 h-4 mt-0.5 rounded border flex items-center justify-center transition-colors flex-shrink-0 ${
                     task.status === 'completed'
-                      ? 'bg-blue-600 border-blue-600 text-white'
+                      ? 'bg-black border-black text-white'
                       : 'border-gray-300 hover:border-gray-400 bg-white'
                   }`}
                 >
@@ -55,7 +55,7 @@ export const TodayPriorities = () => {
                   </div>
                   <div className="text-[11px] text-gray-500 mt-0.5 flex items-center gap-2">
                     {isHigh && (
-                      <span className="text-red-600 font-medium">High priority</span>
+                      <span className="text-black font-bold">High priority</span>
                     )}
                     {isHigh && <span>·</span>}
                     <span>Due {task.deadline.toLowerCase()}</span>

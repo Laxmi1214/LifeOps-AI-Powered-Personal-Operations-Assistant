@@ -68,7 +68,7 @@ export const Analytics = () => {
         <div className="p-4 rounded-lg border border-gray-200 bg-white space-y-1">
           <div className="text-[11px] font-medium text-gray-400">Productivity Score</div>
           <div className="text-2xl font-bold text-gray-900">{score}%</div>
-          <div className="text-[11px] text-emerald-600 font-medium">{changePercent} vs last week</div>
+          <div className="text-[11px] text-black font-medium">{changePercent} vs last week</div>
         </div>
 
         <div className="p-4 rounded-lg border border-gray-200 bg-white space-y-1">
@@ -222,7 +222,7 @@ export const Analytics = () => {
         {/* AI Productivity Insights */}
         <div className="p-5 rounded-lg border border-gray-200 bg-white space-y-3">
           <div className="flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+            <Sparkles className="w-3.5 h-3.5 text-black" />
             <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">
               Productivity Insights
             </h3>

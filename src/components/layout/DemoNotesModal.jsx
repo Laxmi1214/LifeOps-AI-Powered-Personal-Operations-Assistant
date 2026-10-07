@@ -17,7 +17,7 @@ export const DemoNotesModal = ({ isOpen, onClose }) => {
         <div className="px-5 py-3.5 border-b border-gray-200 flex items-center justify-between bg-white">
           <div className="flex items-center gap-2">
             <h2 className="text-sm font-semibold text-gray-900">LifeOps Demo & Architecture Guide</h2>
-            <span className="text-[10px] bg-blue-50 text-blue-700 font-medium px-2 py-0.5 rounded border border-blue-100">
+            <span className="text-[10px] bg-white text-black font-bold px-2 py-0.5 rounded border border-[#E5E5E5]">
               Hackathon
             </span>
           </div>
@@ -29,11 +29,11 @@ export const DemoNotesModal = ({ isOpen, onClose }) => {
         {/* Content Body */}
         <div className="flex-1 overflow-y-auto p-5 space-y-4 text-xs text-gray-700 leading-normal">
           {/* Core Idea */}
-          <div className="p-3.5 rounded-lg bg-blue-50/60 border border-blue-100 space-y-1">
-            <div className="font-semibold text-blue-900 text-xs">
+          <div className="p-3.5 rounded-lg bg-[#F9FAFB] border border-[#E5E5E5] space-y-1">
+            <div className="font-bold text-black text-xs">
               "LifeOps doesn't just manage your tasks. It manages the context around your tasks."
             </div>
-            <p className="text-[11px] text-blue-800 leading-relaxed">
+            <p className="text-[11px] text-[#555555] leading-relaxed">
               Instead of 8 disconnected apps, LifeOps unifies tasks, schedule, email, knowledge, meetings, commitments, and analytics into one intelligent operational layer.
             </p>
           </div>
@@ -83,7 +83,7 @@ export const DemoNotesModal = ({ isOpen, onClose }) => {
         <div className="px-5 py-3 border-t border-gray-200 bg-gray-50/50 flex items-center justify-end">
           <button
             onClick={onClose}
-            className="px-3.5 py-1.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs transition-colors"
+            className="px-3.5 py-1.5 rounded-md bg-[#111111] hover:bg-black text-white font-medium text-xs transition-colors"
           >
             Got it
           </button>

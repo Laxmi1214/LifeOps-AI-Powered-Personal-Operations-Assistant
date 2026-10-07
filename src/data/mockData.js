@@ -130,7 +130,7 @@ export const initialCalendarEvents = [
     endTime: '10:30',
     displayTime: '09:00 AM – 10:30 AM',
     category: 'Personal',
-    color: '#06b6d4',
+    color: '#000000',
     location: 'Focus Space / LeetCode',
     participants: ['Alex Rivera'],
     description: 'Graph algorithms, topological sort, and dynamic programming revision.'
@@ -143,7 +143,7 @@ export const initialCalendarEvents = [
     endTime: '12:00',
     displayTime: '11:00 AM – 12:00 PM',
     category: 'Meeting',
-    color: '#6366f1',
+    color: '#333333',
     location: 'Amazon Chime / Video Call',
     participants: ['Alex Rivera', 'Dev Lead Sarah', 'Architect Chen'],
     description: 'Review Streamable HTTP tool calls, security sandbox boundaries, and latency budgets.'
@@ -156,7 +156,7 @@ export const initialCalendarEvents = [
     endTime: '16:00',
     displayTime: '02:00 PM – 04:00 PM',
     category: 'Focus',
-    color: '#8b5cf6',
+    color: '#666666',
     location: 'Personal Operations Workspace',
     participants: ['Alex Rivera'],
     description: 'Protected focus window scheduled by LifeOps. Focus on task management and cross-module actions.'
@@ -169,7 +169,7 @@ export const initialCalendarEvents = [
     endTime: '18:00',
     displayTime: '05:00 PM – 06:00 PM',
     category: 'Personal',
-    color: '#10b981',
+    color: '#111111',
     location: 'Virtual Mock Room',
     participants: ['Alex Rivera', 'Mentor Elena'],
     description: 'High-throughput event-driven microservices architecture walkthrough.'
@@ -182,7 +182,7 @@ export const initialCalendarEvents = [
     endTime: '18:30',
     displayTime: '06:00 PM – 06:30 PM',
     category: 'Deadline',
-    color: '#f43f5e',
+    color: '#999999',
     location: 'Hackathon Portal',
     participants: ['All Team Members'],
     description: 'Final code freeze and video presentation upload.'
@@ -565,16 +565,16 @@ export const productivityMetrics = {
   ],
 
   taskStatusDistribution: [
-    { name: 'Completed', count: 31, color: '#10b981' },
-    { name: 'Pending', count: 5, color: '#6366f1' },
-    { name: 'Overdue', count: 2, color: '#f43f5e' }
+    { name: 'Completed', count: 31, color: '#111111' },
+    { name: 'Pending', count: 5, color: '#555555' },
+    { name: 'Overdue', count: 2, color: '#999999' }
   ],
 
   categoryDistribution: [
-    { name: 'Project & Engineering', value: 42, color: '#6366f1' },
-    { name: 'Meeting Operations', value: 24, color: '#8b5cf6' },
-    { name: 'Email Intelligence', value: 18, color: '#06b6d4' },
-    { name: 'Documentation & Knowledge', value: 16, color: '#10b981' }
+    { name: 'Project & Engineering', value: 42, color: '#111111' },
+    { name: 'Meeting Operations', value: 24, color: '#555555' },
+    { name: 'Email Intelligence', value: 18, color: '#888888' },
+    { name: 'Documentation & Knowledge', value: 16, color: '#A3A3A3' }
   ],
 
   aiInsights: [
@@ -617,7 +617,7 @@ export const initialNotifications = [
     message: 'Talent Acquisition requires your response before Friday 5:00 PM.',
     time: '25m ago',
     read: false,
-    badgeColor: 'bg-rose-500'
+    badgeColor: 'bg-[#111111]'
   },
   {
     id: 'notif-2',
@@ -626,7 +626,7 @@ export const initialNotifications = [
     message: '"Complete hackathon prototype for LifeOps" due at 6:00 PM.',
     time: '1h ago',
     read: false,
-    badgeColor: 'bg-amber-500'
+    badgeColor: 'bg-[#333333]'
   },
   {
     id: 'notif-3',
@@ -635,7 +635,7 @@ export const initialNotifications = [
     message: '"Deep Work: Hackathon Prototype Implementation" starts at 2:00 PM.',
     time: '2h ago',
     read: false,
-    badgeColor: 'bg-indigo-500'
+    badgeColor: 'bg-[#555555]'
   },
   {
     id: 'notif-4',
@@ -644,7 +644,7 @@ export const initialNotifications = [
     message: 'Netflix renews in 3 days (₹649 auto-charge).',
     time: '5h ago',
     read: true,
-    badgeColor: 'bg-cyan-500'
+    badgeColor: 'bg-[#777777]'
   },
   {
     id: 'notif-5',
@@ -653,7 +653,7 @@ export const initialNotifications = [
     message: '2-hour free window identified between 2 PM and 4 PM today.',
     time: 'Today',
     read: true,
-    badgeColor: 'bg-purple-500'
+    badgeColor: 'bg-[#999999]'
   }
 ];
 

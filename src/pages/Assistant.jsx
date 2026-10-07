@@ -79,7 +79,7 @@ export const Assistant = () => {
         <div>
           <h1 className="text-xl font-semibold text-gray-900 tracking-tight flex items-center gap-2">
             LifeOps Assistant
-            <span className="text-[10px] font-medium bg-blue-50 text-blue-700 px-2 py-0.5 rounded border border-blue-100">
+            <span className="text-[10px] font-medium bg-[#F5F5F5] text-black px-2 py-0.5 rounded border border-[#E5E5E5]">
               Copilot
             </span>
           </h1>
@@ -112,7 +112,7 @@ export const Assistant = () => {
               <div
                 className={`p-3.5 rounded-lg text-xs leading-relaxed max-w-2xl ${
                   isUser
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-black text-white'
                     : 'bg-gray-50 border border-gray-200 text-gray-800'
                 }`}
               >
@@ -128,14 +128,14 @@ export const Assistant = () => {
                     return (
                       <div
                         key={card.id}
-                        className="p-3.5 rounded-lg bg-blue-50/50 border border-blue-100 text-left space-y-2"
+                        className="p-3.5 rounded-lg bg-white border border-[#E5E5E5] text-left space-y-2"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-[11px] font-semibold text-blue-900 uppercase tracking-wider">
+                          <span className="text-[11px] font-bold text-black uppercase tracking-wider">
                             {card.title}
                           </span>
                           {card.priority && (
-                            <span className="text-[10px] font-medium text-red-700 bg-red-50 border border-red-100 px-1.5 py-0.2 rounded">
+                            <span className="text-[10px] font-bold text-black bg-white border border-[#E5E5E5] px-1.5 py-0.2 rounded">
                               {card.priority}
                             </span>
                           )}
@@ -143,7 +143,7 @@ export const Assistant = () => {
 
                         {card.timeWindow && (
                           <div className="text-xs font-semibold text-gray-900 flex items-center gap-1.5">
-                            <Clock className="w-3.5 h-3.5 text-blue-600" />
+                            <Clock className="w-3.5 h-3.5 text-black" />
                             <span>{card.timeWindow}</span>
                           </div>
                         )}
@@ -162,9 +162,9 @@ export const Assistant = () => {
                         )}
 
                         {/* Action Buttons */}
-                        <div className="pt-2 border-t border-blue-100/60 flex items-center gap-2">
+                        <div className="pt-2 border-t border-[#E5E5E5] flex items-center gap-2">
                           {isHandled ? (
-                            <div className="flex items-center gap-1 text-xs text-emerald-700 font-medium">
+                            <div className="flex items-center gap-1 text-xs text-[#555555] font-medium">
                               <Check className="w-3.5 h-3.5" />
                               <span>Action scheduled</span>
                             </div>
@@ -172,7 +172,7 @@ export const Assistant = () => {
                             <>
                               <button
                                 onClick={() => handleCardSchedule(card)}
-                                className="px-3 py-1.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium transition-colors shadow-subtle"
+                                className="px-3 py-1.5 rounded-md bg-[#111111] hover:bg-black text-white text-xs font-medium transition-colors shadow-subtle"
                               >
                                 Schedule this
                               </button>
@@ -187,7 +187,7 @@ export const Assistant = () => {
                             <>
                               <button
                                 onClick={() => handleCreateTaskFromCard(card)}
-                                className="px-3 py-1.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium transition-colors shadow-subtle"
+                                className="px-3 py-1.5 rounded-md bg-[#111111] hover:bg-black text-white text-xs font-medium transition-colors shadow-subtle"
                               >
                                 Create task
                               </button>
@@ -211,7 +211,7 @@ export const Assistant = () => {
 
         {isGenerating && (
           <div className="flex items-center gap-2 text-xs text-gray-400 py-2">
-            <Sparkles className="w-3.5 h-3.5 text-blue-600 animate-spin" />
+            <Sparkles className="w-3.5 h-3.5 text-black animate-spin" />
             <span>LifeOps is analyzing your context...</span>
           </div>
         )}
@@ -237,7 +237,7 @@ export const Assistant = () => {
 
       {/* Input Bar */}
       <form onSubmit={handleSend} className="pt-2">
-        <div className="flex items-center gap-2 border border-gray-200 rounded-lg p-1.5 bg-white focus-within:border-blue-500 shadow-subtle">
+        <div className="flex items-center gap-2 border border-gray-200 rounded-lg p-1.5 bg-white focus-within:border-black shadow-subtle">
           <input
             ref={inputRef}
             type="text"
@@ -250,7 +250,7 @@ export const Assistant = () => {
           <button
             type="submit"
             disabled={!inputText.trim() || isGenerating}
-            className="px-3 py-1.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs transition-colors disabled:opacity-40"
+            className="px-3 py-1.5 rounded-md bg-[#111111] hover:bg-black text-white font-medium text-xs transition-colors disabled:opacity-40"
           >
             Send
           </button>

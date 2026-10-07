@@ -39,7 +39,7 @@ export const NotificationPanel = ({ onClose }) => {
         <div className="flex items-center gap-2">
           <span className="font-semibold text-xs text-gray-900">Notifications</span>
           {notifications.filter((n) => !n.read).length > 0 && (
-            <span className="text-[10px] bg-blue-50 text-blue-700 font-medium px-1.5 py-0.2 rounded">
+            <span className="text-[10px] bg-[#111111] text-white font-medium px-1.5 py-0.2 rounded">
               {notifications.filter((n) => !n.read).length} new
             </span>
           )}
@@ -89,7 +89,7 @@ export const NotificationPanel = ({ onClose }) => {
               key={item.id}
               onClick={() => handleNotificationClick(item)}
               className={`p-3 hover:bg-gray-50 transition-colors cursor-pointer text-left ${
-                !item.read ? 'bg-blue-50/30' : ''
+                !item.read ? 'bg-[#F9FAFB]' : ''
               }`}
             >
               <div className="flex items-center justify-between mb-0.5">

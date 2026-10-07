@@ -19,7 +19,7 @@ export const UpcomingSchedule = () => {
         </h2>
         <button
           onClick={() => navigate('/calendar')}
-          className="text-xs text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 group"
+          className="text-xs text-black hover:underline font-medium flex items-center gap-1 group"
         >
           <span>Open calendar</span>
           <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
@@ -31,7 +31,7 @@ export const UpcomingSchedule = () => {
           {todaySchedule.map((event) => (
             <div key={event.id} className="relative group">
               {/* Dot on timeline */}
-              <div className="absolute -left-[1.65rem] top-1 w-2 h-2 rounded-full bg-blue-600 ring-4 ring-white" />
+              <div className="absolute -left-[1.65rem] top-1 w-2 h-2 rounded-full bg-black ring-4 ring-white" />
 
               <div>
                 <div className="flex items-baseline gap-2">
