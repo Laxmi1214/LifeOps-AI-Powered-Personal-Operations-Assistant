@@ -8,7 +8,7 @@ export const UpcomingSchedule = () => {
   const navigate = useNavigate();
 
   const todaySchedule = calendarEvents
-    .filter((e) => e.date === '2026-10-07')
+    .filter((e) => e.date === '2026-10-07' || e.date?.toLowerCase() === 'today')
     .sort((a, b) => a.startTime.localeCompare(b.startTime));
 
   return (

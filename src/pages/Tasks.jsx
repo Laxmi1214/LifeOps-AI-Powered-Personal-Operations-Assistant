@@ -49,16 +49,15 @@ export const Tasks = () => {
     (t) => t.status === 'pending' && (t.deadline === 'Today' || t.dueDate === '2026-10-07')
   );
 
+  const overdueTasks = filteredTasks.filter(
+    (t) => t.status === 'pending' && (t.deadline === 'Yesterday' || (t.dueDate && t.dueDate < '2026-10-07'))
+  );
+
   const upcomingTasks = filteredTasks.filter(
     (t) =>
       t.status === 'pending' &&
-      t.deadline !== 'Today' &&
-      t.deadline !== 'Yesterday' &&
-      t.dueDate > '2026-10-07'
-  );
-
-  const overdueTasks = filteredTasks.filter(
-    (t) => t.status === 'pending' && (t.deadline === 'Yesterday' || t.dueDate < '2026-10-07')
+      !todayTasks.some((today) => today.id === t.id) &&
+      !overdueTasks.some((overdue) => overdue.id === t.id)
   );
 
   const completedTasks = filteredTasks.filter((t) => t.status === 'completed');
@@ -131,7 +130,7 @@ export const Tasks = () => {
 
                 {/* Due */}
                 <div className="col-span-2 hidden sm:block text-gray-600 text-[11px]">
-                  {task.deadline}
+                  {task.deadline || task.dueDate || 'Tomorrow'}
                 </div>
 
                 {/* Category */}

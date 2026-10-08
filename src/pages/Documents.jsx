@@ -60,7 +60,12 @@ export const Documents = () => {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900 tracking-tight">Documents</h1>
+          <h1 className="text-2xl font-semibold text-gray-900 tracking-tight flex items-center gap-2">
+            Documents
+            <span className="text-[10px] font-medium bg-[#F5F5F5] text-gray-600 px-2 py-0.5 rounded border border-[#E5E5E5]">
+              Demo dataset · MCP connector pending
+            </span>
+          </h1>
           <p className="text-xs text-gray-500 mt-1">
             Searchable personal knowledge repository with AI executive summaries.
           </p>

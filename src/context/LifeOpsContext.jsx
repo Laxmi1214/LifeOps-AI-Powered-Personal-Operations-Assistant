@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import {
   initialTasks,
   initialCalendarEvents,
@@ -7,7 +7,6 @@ import {
   initialMeetings,
   initialReminders,
   initialSubscriptions,
-  productivityMetrics,
   initialNotifications,
   initialAssistantMessages,
   freeTimeSlots
@@ -16,10 +15,134 @@ import { emailService, meetingService, subscriptionService, aiAssistantService }
 
 const LifeOpsContext = createContext();
 
+// Deterministic productivity calculation based on real application state
+export const computeProductivityMetrics = (tasks, calendarEvents) => {
+  const completed = tasks.filter((t) => t.status === 'completed');
+  const pending = tasks.filter((t) => t.status !== 'completed');
+  const overdue = pending.filter(
+    (t) => t.deadline === 'Yesterday' || (t.dueDate && t.dueDate < '2026-10-07')
+  );
+  const totalTasks = completed.length + pending.length;
+
+  if (totalTasks === 0) {
+    return {
+      score: 0,
+      previousScore: 0,
+      changePercent: '0%',
+      completedTasks: 0,
+      totalTasksThisWeek: 0,
+      completionRate: 0,
+      focusTime: '0h 00m',
+      targetFocusTime: '20h 00m',
+      onTimeRate: 100,
+      weeklyTrend: [],
+      taskStatusDistribution: [],
+      categoryDistribution: [],
+      aiInsights: []
+    };
+  }
+
+  const completionRate = Math.round((completed.length / totalTasks) * 100);
+
+  // Calculate focus minutes from calendar events
+  let focusMinutes = 0;
+  for (const ev of calendarEvents) {
+    const cat = (ev.category || '').toLowerCase();
+    const title = (ev.title || '').toLowerCase();
+    if (cat.includes('focus') || cat.includes('deep work') || title.includes('focus') || cat.includes('personal')) {
+      const sParts = (ev.startTime || '09:00').split(':');
+      const eParts = (ev.endTime || '10:00').split(':');
+      try {
+        const sM = parseInt(sParts[0]) * 60 + parseInt(sParts[1]);
+        const eM = parseInt(eParts[0]) * 60 + parseInt(eParts[1]);
+        if (eM > sM) focusMinutes += (eM - sM);
+      } catch (e) {
+        focusMinutes += 60;
+      }
+    }
+  }
+
+  const focusHoursNum = parseFloat((focusMinutes / 60).toFixed(1));
+  const focusTimeStr = `${Math.floor(focusMinutes / 60)}h ${focusMinutes % 60}m`;
+
+  // Deterministic formula: 60% completion rate + 30% focus time ratio + 10% on-time factor
+  const compComp = completionRate * 0.6;
+  const focusComp = Math.min(1.0, focusHoursNum / 15.0) * 30.0;
+  const overduePenalty = overdue.length * 2.5;
+  const onTimeFactor = Math.max(0, 10.0 - overduePenalty);
+  const score = Math.round(Math.min(100, Math.max(0, compComp + focusComp + onTimeFactor)));
+
+  return {
+    score,
+    previousScore: 72,
+    changePercent: score >= 72 ? `+${score - 72}%` : `-${72 - score}%`,
+    completedTasks: completed.length,
+    totalTasksThisWeek: totalTasks,
+    completionRate,
+    focusTime: focusTimeStr,
+    targetFocusTime: '20h 00m',
+    onTimeRate: Math.max(0, 100 - overdue.length * 5),
+
+    weeklyTrend: [
+      { day: 'Thu', score: Math.max(40, score - 14), focusHours: 3.2, completed: 4, target: 4.0 },
+      { day: 'Fri', score: Math.max(45, score - 10), focusHours: 3.8, completed: 5, target: 4.0 },
+      { day: 'Sat', score: 60, focusHours: 2.0, completed: 3, target: 3.0 },
+      { day: 'Sun', score: 55, focusHours: 1.5, completed: 2, target: 2.0 },
+      { day: 'Mon', score: Math.max(50, score - 5), focusHours: 4.2, completed: 7, target: 4.0 },
+      { day: 'Tue', score: Math.max(55, score + 2), focusHours: 4.6, completed: 8, target: 4.0 },
+      { day: 'Wed (Today)', score: score, focusHours: focusHoursNum, completed: completed.length, target: 4.0 }
+    ],
+
+    taskStatusDistribution: [
+      { name: 'Completed', count: completed.length, color: '#111111' },
+      { name: 'Pending', count: pending.length, color: '#555555' },
+      { name: 'Overdue', count: overdue.length, color: '#999999' }
+    ],
+
+    categoryDistribution: [
+      { name: 'Project & Engineering', value: 42, color: '#111111' },
+      { name: 'Meeting Operations', value: 24, color: '#555555' },
+      { name: 'Email Intelligence', value: 18, color: '#888888' },
+      { name: 'Documentation & Knowledge', value: 16, color: '#A3A3A3' }
+    ],
+
+    aiInsights: [
+      {
+        id: 'ins-1',
+        type: 'positive',
+        title: 'Operational Velocity',
+        text: `You have completed ${completed.length} of ${totalTasks} total tasks with a dynamic score of ${score}%.`,
+        icon: 'trending-up'
+      },
+      {
+        id: 'ins-2',
+        type: 'peak',
+        title: 'Focus Allocation',
+        text: `You have ${focusHoursNum}h of protected focus sessions registered in your calendar.`,
+        icon: 'clock'
+      }
+    ]
+  };
+};
+
 export const LifeOpsProvider = ({ children }) => {
-  // Operational State
-  const [tasks, setTasks] = useState(initialTasks);
-  const [calendarEvents, setCalendarEvents] = useState(initialCalendarEvents);
+  // Operational State initialized with persistent cache or seeds
+  const [tasks, setTasks] = useState(() => {
+    try {
+      const saved = localStorage.getItem('lifeops_tasks');
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    return initialTasks;
+  });
+
+  const [calendarEvents, setCalendarEvents] = useState(() => {
+    try {
+      const saved = localStorage.getItem('lifeops_calendar');
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    return initialCalendarEvents;
+  });
+
   const [emails, setEmails] = useState(initialEmails);
   const [documents, setDocuments] = useState(initialDocuments);
   const [meetings, setMeetings] = useState(initialMeetings);
@@ -28,6 +151,53 @@ export const LifeOpsProvider = ({ children }) => {
   const [notifications, setNotifications] = useState(initialNotifications);
   const [chatMessages, setChatMessages] = useState(initialAssistantMessages);
   const [availableSlots, setAvailableSlots] = useState(freeTimeSlots);
+
+  // Sync state to localStorage on any change
+  useEffect(() => {
+    try {
+      localStorage.setItem('lifeops_tasks', JSON.stringify(tasks));
+    } catch (e) {}
+  }, [tasks]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('lifeops_calendar', JSON.stringify(calendarEvents));
+    } catch (e) {}
+  }, [calendarEvents]);
+
+  // Synchronize with authoritative backend REST API on mount
+  useEffect(() => {
+    const syncWithBackend = async () => {
+      try {
+        const [tasksRes, calRes] = await Promise.all([
+          fetch('/api/tasks'),
+          fetch('/api/calendar')
+        ]);
+        if (tasksRes.ok) {
+          const remoteTasks = await tasksRes.json();
+          if (Array.isArray(remoteTasks) && remoteTasks.length > 0) {
+            setTasks(remoteTasks);
+            localStorage.setItem('lifeops_tasks', JSON.stringify(remoteTasks));
+          }
+        }
+        if (calRes.ok) {
+          const remoteCal = await calRes.json();
+          if (Array.isArray(remoteCal) && remoteCal.length > 0) {
+            setCalendarEvents(remoteCal);
+            localStorage.setItem('lifeops_calendar', JSON.stringify(remoteCal));
+          }
+        }
+      } catch (err) {
+        console.warn('Backend sync fallback to local storage:', err);
+      }
+    };
+    syncWithBackend();
+  }, []);
+
+  // Dynamically calculated productivity metrics
+  const productivityMetrics = useMemo(() => {
+    return computeProductivityMetrics(tasks, calendarEvents);
+  }, [tasks, calendarEvents]);
 
   // Global UI State
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
@@ -64,19 +234,26 @@ export const LifeOpsProvider = ({ children }) => {
 
   // 1. Task Operations
   const toggleTaskStatus = (taskId) => {
+    let nextStatus = 'completed';
     setTasks((prev) =>
       prev.map((task) => {
         if (task.id === taskId) {
-          const newStatus = task.status === 'completed' ? 'pending' : 'completed';
+          nextStatus = task.status === 'completed' ? 'pending' : 'completed';
           showToast(
-            newStatus === 'completed' ? `Completed: "${task.title}"` : `Reopened: "${task.title}"`,
-            newStatus === 'completed' ? 'success' : 'info'
+            nextStatus === 'completed' ? `Completed: "${task.title}"` : `Reopened: "${task.title}"`,
+            nextStatus === 'completed' ? 'success' : 'info'
           );
-          return { ...task, status: newStatus };
+          return { ...task, status: nextStatus };
         }
         return task;
       })
     );
+    // Sync status with backend store
+    fetch(`/api/tasks/${taskId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status: nextStatus })
+    }).catch((err) => console.warn('Failed to sync task status to backend:', err));
   };
 
   const addTask = (newTask) => {
@@ -85,10 +262,21 @@ export const LifeOpsProvider = ({ children }) => {
       status: 'pending',
       source: 'Manual',
       isAiGenerated: false,
+      priority: 'MEDIUM',
+      deadline: 'Tomorrow',
+      dueDate: '2026-10-08',
       ...newTask
     };
     setTasks((prev) => [created, ...prev]);
     showToast(`Task created: "${created.title}"`, 'success');
+
+    // Sync task to backend store
+    fetch('/api/tasks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(created)
+    }).catch((err) => console.warn('Failed to sync new task to backend:', err));
+
     return created;
   };
 
@@ -96,6 +284,10 @@ export const LifeOpsProvider = ({ children }) => {
     const target = tasks.find((t) => t.id === taskId);
     setTasks((prev) => prev.filter((t) => t.id !== taskId));
     showToast(`Deleted task: "${target?.title || 'Task'}"`, 'info');
+
+    // Sync deletion to backend store
+    fetch(`/api/tasks/${taskId}`, { method: 'DELETE' })
+      .catch((err) => console.warn('Failed to sync task deletion to backend:', err));
   };
 
   // 2. Calendar Operations
@@ -105,10 +297,22 @@ export const LifeOpsProvider = ({ children }) => {
       category: 'Focus',
       color: '#6366f1',
       participants: ['Alex Rivera'],
+      date: '2026-10-08',
+      startTime: '14:00',
+      endTime: '16:00',
+      displayTime: '02:00 PM – 04:00 PM',
       ...eventData
     };
     setCalendarEvents((prev) => [...prev, newEv]);
-    showToast(`Scheduled: "${newEv.title}" for ${newEv.startTime || 'specified time'}`, 'success');
+    showToast(`Scheduled: "${newEv.title}" for ${newEv.displayTime || newEv.startTime || 'specified time'}`, 'success');
+
+    // Sync event to backend store
+    fetch('/api/calendar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newEv)
+    }).catch((err) => console.warn('Failed to sync calendar event to backend:', err));
+
     return newEv;
   };
 
@@ -129,6 +333,12 @@ export const LifeOpsProvider = ({ children }) => {
     setCalendarEvents((prev) => [...prev, newEv]);
     setAvailableSlots((prev) => prev.filter((s) => s.id !== slot.id));
     showToast(`Scheduled focus block: "${newEv.title}" (${slot.startTime} – ${slot.endTime})`, 'success');
+
+    fetch('/api/calendar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newEv)
+    }).catch((err) => console.warn('Failed to sync slot to backend:', err));
   };
 
   // 3. Email Operations
@@ -272,6 +482,8 @@ export const LifeOpsProvider = ({ children }) => {
   };
 
   // AI Assistant Chat Send
+  const [conversationId] = useState(() => `conv-client-${Date.now()}`);
+
   const sendChatMessage = async (text) => {
     if (!text.trim()) return;
 
@@ -284,18 +496,114 @@ export const LifeOpsProvider = ({ children }) => {
 
     setChatMessages((prev) => [...prev, userMsg]);
 
-    // Query mock AI Assistant service
-    const response = await aiAssistantService.generateResponse(text);
+    try {
+      // Query AI Assistant agent service
+      const response = await aiAssistantService.generateResponse(text, conversationId);
 
-    const assistantMsg = {
-      id: `msg-${Date.now()}-ai`,
-      sender: 'assistant',
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      text: response.text,
-      actionCards: response.actionCards
-    };
+      // Sync local state if agent executed tools
+      if (response.toolCalls && response.toolCalls.length > 0) {
+        for (const call of response.toolCalls) {
+          if (call.tool === 'create_task' && call.status === 'success' && call.result?.task) {
+            const t = call.result.task;
+            const mapped = {
+              id: t.id || `t-${Date.now()}`,
+              title: t.title,
+              priority: (t.priority || 'MEDIUM').toUpperCase(),
+              deadline: t.deadline || t.due_date || 'Tomorrow',
+              dueDate: t.dueDate || '2026-10-08',
+              dueTime: t.dueTime || '05:00 PM',
+              status: 'pending',
+              category: t.category || 'Project',
+              source: 'AI Assistant',
+              isAiGenerated: false
+            };
+            setTasks((prev) => [mapped, ...prev]);
+          } else if (call.tool === 'update_task' && call.status === 'success' && call.result?.task) {
+            const t = call.result.task;
+            setTasks((prev) => prev.map((item) => {
+              if (item.id === t.id || item.title.toLowerCase().includes(t.title.toLowerCase()) || t.title.toLowerCase().includes(item.title.toLowerCase())) {
+                return {
+                  ...item,
+                  priority: t.priority ? t.priority.toUpperCase() : item.priority,
+                  deadline: t.deadline || t.due_date || item.deadline,
+                  dueDate: t.dueDate || item.dueDate,
+                  status: t.status || item.status
+                };
+              }
+              return item;
+            }));
+          } else if (call.tool === 'complete_task' && call.status === 'success' && call.result?.task) {
+            const t = call.result.task;
+            setTasks((prev) => prev.map((item) => {
+              if (item.id === t.id || item.title.toLowerCase().includes(t.title.toLowerCase()) || t.title.toLowerCase().includes(item.title.toLowerCase())) {
+                return { ...item, status: 'completed' };
+              }
+              return item;
+            }));
+          } else if (call.tool === 'create_calendar_event' && call.status === 'success' && call.result?.event) {
+            const ev = call.result.event;
+            const mappedEv = {
+              id: ev.id || `ev-${Date.now()}`,
+              title: ev.title,
+              date: ev.date || '2026-10-08',
+              startTime: ev.startTime || ev.start_time || '14:00',
+              endTime: ev.endTime || ev.end_time || '16:00',
+              displayTime: ev.displayTime || ev.display_time || '02:00 PM – 04:00 PM',
+              category: ev.category || 'Focus',
+              color: '#8b5cf6',
+              location: ev.location || 'LifeOps Focus Suite',
+              participants: ['Alex Rivera'],
+              description: ev.description || `Scheduled focus block: ${ev.title}`
+            };
+            setCalendarEvents((prev) => [...prev, mappedEv]);
+          }
+        }
 
-    setChatMessages((prev) => [...prev, assistantMsg]);
+        // Authoritative sync with backend store
+        try {
+          const [tasksRes, calRes] = await Promise.all([
+            fetch('/api/tasks'),
+            fetch('/api/calendar')
+          ]);
+          if (tasksRes.ok) {
+            const freshTasks = await tasksRes.json();
+            if (Array.isArray(freshTasks) && freshTasks.length > 0) {
+              setTasks(freshTasks);
+              localStorage.setItem('lifeops_tasks', JSON.stringify(freshTasks));
+            }
+          }
+          if (calRes.ok) {
+            const freshCal = await calRes.json();
+            if (Array.isArray(freshCal) && freshCal.length > 0) {
+              setCalendarEvents(freshCal);
+              localStorage.setItem('lifeops_calendar', JSON.stringify(freshCal));
+            }
+          }
+        } catch (e) {
+          // ignore network sync errors during local offline mode
+        }
+      }
+
+      const assistantMsg = {
+        id: `msg-${Date.now()}-ai`,
+        sender: 'assistant',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        text: response.text,
+        actionCards: response.actionCards
+      };
+
+      setChatMessages((prev) => [...prev, assistantMsg]);
+    } catch (err) {
+      console.error('Error in sendChatMessage:', err);
+      const errorMsg = {
+        id: `msg-${Date.now()}-err`,
+        sender: 'assistant',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        text: "I couldn't process that request because the agent service is currently unavailable.",
+        actionCards: []
+      };
+      setChatMessages((prev) => [...prev, errorMsg]);
+    }
   };
 
   // Notification actions

@@ -33,8 +33,8 @@ export const ProductivitySnapshot = () => {
             Productivity Summary
           </h2>
           <div className="flex items-baseline gap-2 mt-1">
-            <span className="text-2xl font-bold text-gray-900">82%</span>
-            <span className="text-xs font-bold text-black">+14% vs last week</span>
+            <span className="text-2xl font-bold text-gray-900">{productivityMetrics.score}%</span>
+            <span className="text-xs font-bold text-black">{productivityMetrics.changePercent} vs last week</span>
           </div>
         </div>
         <button
@@ -49,15 +49,17 @@ export const ProductivitySnapshot = () => {
       <div className="grid grid-cols-3 gap-4 pt-2 border-t border-gray-100 text-xs">
         <div>
           <div className="text-gray-400 text-[11px]">Tasks completed</div>
-          <div className="font-semibold text-gray-900 mt-0.5">8 of 10 today</div>
+          <div className="font-semibold text-gray-900 mt-0.5">
+            {productivityMetrics.completedTasks} of {productivityMetrics.totalTasksThisWeek} total
+          </div>
         </div>
         <div>
           <div className="text-gray-400 text-[11px]">Focus time</div>
-          <div className="font-semibold text-gray-900 mt-0.5">4h 20m logged</div>
+          <div className="font-semibold text-gray-900 mt-0.5">{productivityMetrics.focusTime} logged</div>
         </div>
         <div>
           <div className="text-gray-400 text-[11px]">On-time completion</div>
-          <div className="font-semibold text-gray-900 mt-0.5">86% rate</div>
+          <div className="font-semibold text-gray-900 mt-0.5">{productivityMetrics.onTimeRate}% rate</div>
         </div>
       </div>
 

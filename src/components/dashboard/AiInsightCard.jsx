@@ -3,8 +3,11 @@ import { Sparkles, Check } from 'lucide-react';
 import { useLifeOps } from '../../context/LifeOpsContext';
 
 export const AiInsightCard = () => {
-  const { planMyDay } = useLifeOps();
+  const { tasks, planMyDay } = useLifeOps();
   const [isPlanned, setIsPlanned] = useState(false);
+
+  const pendingTasks = tasks.filter((t) => t.status === 'pending');
+  const highPrio = pendingTasks.find((t) => t.priority === 'HIGH');
 
   const handlePlan = () => {
     planMyDay();
@@ -19,7 +22,7 @@ export const AiInsightCard = () => {
           <span>LifeOps Insight</span>
         </div>
         <p className="text-xs text-gray-700 leading-relaxed">
-          You have 3 unfinished tasks today. Your project prototype is the highest priority, and you have an open 2-hour window between 2 PM and 4 PM.
+          You have {pendingTasks.length} pending task{pendingTasks.length === 1 ? '' : 's'}. {highPrio ? `'${highPrio.title}' is currently your top priority item.` : 'All critical items are cleared.'} Open focus windows are available to reserve today.
         </p>
       </div>
 

@@ -61,9 +61,14 @@ export const Assistant = () => {
     setIsGenerating(false);
   };
 
-  const handleCardSchedule = (card) => {
+  const handleCardSchedule = async (card) => {
     scheduleTaskOnCalendar({ title: card.taskTitle || 'Focus Session' });
     setScheduledCards((prev) => ({ ...prev, [card.id]: true }));
+    if (card.requires_confirmation || card.action) {
+      setIsGenerating(true);
+      await sendChatMessage('Confirm');
+      setIsGenerating(false);
+    }
   };
 
   const handleCreateTaskFromCard = (card) => {

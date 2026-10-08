@@ -184,7 +184,44 @@ export const aiAssistantService = {
     return [...initialAssistantMessages];
   },
 
-  async generateResponse(query) {
+  async generateResponse(query, conversationId = 'default-session') {
+    try {
+      const res = await fetch('/api/agent/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: query,
+          conversation_id: conversationId,
+        }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        return {
+          text: data.message,
+          actionCards: (data.actions || []).map((card) => ({
+            id: card.id || `card-${Date.now()}`,
+            type: card.type || 'schedule_plan',
+            title: card.title,
+            timeWindow: card.timeWindow,
+            taskTitle: card.taskTitle,
+            priority: card.priority,
+            requires_confirmation: card.requires_confirmation,
+            action: card.action,
+            sender: card.sender,
+            summary: card.summary,
+            actions: ['Schedule this', 'Dismiss']
+          })),
+          intent: data.intent,
+          toolCalls: data.tool_calls,
+          requiresConfirmation: data.requires_confirmation,
+          pendingAction: data.pending_action,
+          conversationId: data.conversation_id
+        };
+      }
+    } catch (err) {
+      console.warn('LifeOps agent API call error, falling back:', err);
+    }
+
     await simulateLatency(450);
     const normalized = query.toLowerCase();
 

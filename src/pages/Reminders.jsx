@@ -22,7 +22,12 @@ export const Reminders = () => {
     <div className="space-y-6 pb-16 animate-fade-in max-w-5xl mx-auto">
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl font-semibold text-gray-900 tracking-tight">Reminders</h1>
+        <h1 className="text-2xl font-semibold text-gray-900 tracking-tight flex items-center gap-2">
+          Reminders
+          <span className="text-[10px] font-medium bg-[#F5F5F5] text-gray-600 px-2 py-0.5 rounded border border-[#E5E5E5]">
+            Demo dataset · MCP connector pending
+          </span>
+        </h1>
         <p className="text-xs text-gray-500 mt-1">
           Contextual schedule nudges, deadlines, and renewal reminders.
         </p>

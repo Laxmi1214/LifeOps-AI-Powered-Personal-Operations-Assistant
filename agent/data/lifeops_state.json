@@ -1,0 +1,246 @@
+{
+  "tasks": [
+    {
+      "id": "t-9f0c13",
+      "title": "finish the documentation",
+      "priority": "MEDIUM",
+      "deadline": "Tomorrow",
+      "dueDate": "2026-10-08",
+      "dueTime": "5:00 PM",
+      "category": "Work",
+      "status": "pending",
+      "source": "AI Assistant",
+      "isAiGenerated": false,
+      "description": "",
+      "created_at": "2026-10-08T17:28:55.317273"
+    },
+    {
+      "id": "t-e10cfb",
+      "title": "rew",
+      "priority": "HIGH",
+      "deadline": "Today",
+      "dueDate": "2026-10-07",
+      "dueTime": "5:00 PM",
+      "category": "Project",
+      "status": "pending",
+      "source": "AI Assistant",
+      "isAiGenerated": false,
+      "description": "erty",
+      "created_at": "2026-10-08T17:25:30.073677"
+    },
+    {
+      "id": "t-89645b",
+      "title": "Dynamic Test Task 002",
+      "priority": "MEDIUM",
+      "deadline": "Tomorrow",
+      "dueDate": "2026-10-08",
+      "dueTime": "5:00 PM",
+      "category": "Work",
+      "status": "pending",
+      "source": "AI Assistant",
+      "isAiGenerated": false,
+      "description": "",
+      "created_at": "2026-10-08T17:04:17.626345"
+    },
+    {
+      "id": "t-37b58e",
+      "title": "Dynamic Test Task 001",
+      "priority": "HIGH",
+      "deadline": "Tomorrow",
+      "dueDate": "2026-10-08",
+      "dueTime": "5:00 PM",
+      "category": "Work",
+      "status": "completed",
+      "source": "AI Assistant",
+      "isAiGenerated": false,
+      "description": "",
+      "created_at": "2026-10-08T17:04:17.602892",
+      "completed_at": "2026-10-08T17:04:17.650960"
+    },
+    {
+      "id": "t-1",
+      "title": "Complete hackathon prototype for LifeOps",
+      "description": "Finalize core UI components, cross-module action cards, and Amazon hackathon demo flows.",
+      "priority": "HIGH",
+      "deadline": "Today",
+      "dueDate": "2026-10-07",
+      "dueTime": "6:00 PM",
+      "category": "Project",
+      "status": "pending",
+      "source": "Project",
+      "isAiGenerated": true,
+      "estimatedMinutes": 120,
+      "created_at": "2026-10-07T08:00:00"
+    },
+    {
+      "id": "t-2",
+      "title": "Review project architecture & MCP specification",
+      "description": "Ensure Streamable HTTP connector and MCP client schemas match tools specification.",
+      "priority": "MEDIUM",
+      "deadline": "Tomorrow",
+      "dueDate": "2026-10-08",
+      "dueTime": "11:00 AM",
+      "category": "Engineering",
+      "status": "pending",
+      "source": "Email",
+      "isAiGenerated": false,
+      "estimatedMinutes": 45,
+      "created_at": "2026-10-07T09:00:00"
+    },
+    {
+      "id": "t-3",
+      "title": "Respond to Technical Assessment confirmation",
+      "description": "Confirm interview availability for Friday morning slot with hiring team.",
+      "priority": "HIGH",
+      "deadline": "Tomorrow",
+      "dueDate": "2026-10-08",
+      "dueTime": "5:00 PM",
+      "category": "Personal",
+      "status": "pending",
+      "source": "Email",
+      "isAiGenerated": true,
+      "estimatedMinutes": 15,
+      "created_at": "2026-10-07T10:00:00"
+    },
+    {
+      "id": "t-4",
+      "title": "Organize saved technical documents and research papers",
+      "description": "Archive obsolete drafts and tag knowledge items in LifeOps Document index.",
+      "priority": "LOW",
+      "deadline": "This week",
+      "dueDate": "2026-10-10",
+      "dueTime": "4:00 PM",
+      "category": "Operations",
+      "status": "pending",
+      "source": "Manual",
+      "isAiGenerated": false,
+      "estimatedMinutes": 30,
+      "created_at": "2026-10-07T10:30:00"
+    },
+    {
+      "id": "t-5",
+      "title": "Sync with frontend team on design token system",
+      "description": "Align dark-mode color palette, typography hierarchy, and glassmorphism levels.",
+      "priority": "MEDIUM",
+      "deadline": "Today",
+      "dueDate": "2026-10-07",
+      "dueTime": "1:30 PM",
+      "category": "Project",
+      "status": "completed",
+      "source": "Meeting",
+      "isAiGenerated": false,
+      "estimatedMinutes": 30,
+      "created_at": "2026-10-07T07:00:00"
+    },
+    {
+      "id": "t-6",
+      "title": "Implement Recharts analytics dashboard views",
+      "description": "Add weekly productivity curves, completion ratios, and category breakdowns.",
+      "priority": "HIGH",
+      "deadline": "Today",
+      "dueDate": "2026-10-07",
+      "dueTime": "12:00 PM",
+      "category": "Engineering",
+      "status": "completed",
+      "source": "Project",
+      "isAiGenerated": false,
+      "estimatedMinutes": 90,
+      "created_at": "2026-10-07T07:30:00"
+    },
+    {
+      "id": "t-7",
+      "title": "Review cloud database backup configurations",
+      "description": "Verify automated snapshots in AWS us-east-1 and test restore policy.",
+      "priority": "LOW",
+      "deadline": "Yesterday",
+      "dueDate": "2026-10-06",
+      "dueTime": "3:00 PM",
+      "category": "Operations",
+      "status": "completed",
+      "source": "Manual",
+      "isAiGenerated": false,
+      "estimatedMinutes": 20,
+      "created_at": "2026-10-06T11:00:00"
+    }
+  ],
+  "calendar_events": [
+    {
+      "id": "ev-1",
+      "title": "DSA Practice & Algorithmic Problem Solving",
+      "date": "2026-10-07",
+      "startTime": "09:00",
+      "endTime": "10:30",
+      "displayTime": "09:00 AM \u2013 10:30 AM",
+      "category": "Personal",
+      "color": "#000000",
+      "location": "Focus Space / LeetCode",
+      "participants": [
+        "Alex Rivera"
+      ],
+      "description": "Graph algorithms, topological sort, and dynamic programming revision."
+    },
+    {
+      "id": "ev-2",
+      "title": "LifeOps Core Architecture & MCP Sync",
+      "date": "2026-10-07",
+      "startTime": "11:00",
+      "endTime": "12:00",
+      "displayTime": "11:00 AM \u2013 12:00 PM",
+      "category": "Meeting",
+      "color": "#333333",
+      "location": "Amazon Chime / Video Call",
+      "participants": [
+        "Alex Rivera",
+        "Dev Lead Sarah",
+        "Architect Chen"
+      ],
+      "description": "Review Streamable HTTP tool calls, security sandbox boundaries, and latency budgets."
+    },
+    {
+      "id": "ev-3",
+      "title": "Deep Work: Hackathon Prototype Implementation",
+      "date": "2026-10-07",
+      "startTime": "14:00",
+      "endTime": "16:00",
+      "displayTime": "02:00 PM \u2013 04:00 PM",
+      "category": "Focus",
+      "color": "#666666",
+      "location": "Personal Operations Workspace",
+      "participants": [
+        "Alex Rivera"
+      ],
+      "description": "Protected focus window scheduled by LifeOps. Focus on task management and cross-module actions."
+    },
+    {
+      "id": "ev-4",
+      "title": "System Design & Technical Interview Preparation",
+      "date": "2026-10-07",
+      "startTime": "17:00",
+      "endTime": "18:00",
+      "displayTime": "05:00 PM \u2013 06:00 PM",
+      "category": "Personal",
+      "color": "#111111",
+      "location": "Virtual Mock Room",
+      "participants": [
+        "Alex Rivera",
+        "Mentor Elena"
+      ],
+      "description": "High-throughput event-driven microservices architecture walkthrough."
+    },
+    {
+      "id": "ev-5",
+      "title": "Hackathon Submission Deadline",
+      "date": "2026-10-08",
+      "startTime": "18:00",
+      "endTime": "18:30",
+      "displayTime": "06:00 PM \u2013 06:30 PM",
+      "category": "Deadline",
+      "color": "#999999",
+      "location": "Hackathon Portal",
+      "participants": [
+        "All Team Members"
+      ],
+      "description": "Final code freeze and video presentation upload."
+    }
+  ]
+}

@@ -187,7 +187,7 @@ export const Calendar = () => {
           {viewMode === 'day' && (
             <div className="border border-gray-200 rounded-lg p-4 bg-white divide-y divide-gray-100">
               {calendarEvents
-                .filter((e) => e.date === '2026-10-07')
+                .filter((e) => e.date === '2026-10-07' || e.date?.toLowerCase() === 'today')
                 .map((ev) => (
                   <div key={ev.id} className="py-2.5 flex items-center justify-between">
                     <div>

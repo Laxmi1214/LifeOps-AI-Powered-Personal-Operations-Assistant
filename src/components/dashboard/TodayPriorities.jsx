@@ -58,7 +58,7 @@ export const TodayPriorities = () => {
                       <span className="text-black font-bold">High priority</span>
                     )}
                     {isHigh && <span>·</span>}
-                    <span>Due {task.deadline.toLowerCase()}</span>
+                    <span>Due {(task.deadline || task.dueDate || 'Soon').toLowerCase()}</span>
                     <span>·</span>
                     <span>{task.category}</span>
                   </div>
